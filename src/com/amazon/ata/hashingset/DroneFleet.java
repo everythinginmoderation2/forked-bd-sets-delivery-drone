@@ -1,21 +1,23 @@
 package com.amazon.ata.hashingset;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * A fleet of Amazon Delivery Drones.
  */
 public class DroneFleet {
 
-    List<DeliveryDrone> drones = null;
+    Set<DeliveryDrone> drones = null;
     
     /**
      * Construct an object representing a fleet of Amazon Delivery Drones.  The fleet will start empty, but new
      * `DeliveryDrones` can be added.
      */
     public DroneFleet() {
-        drones = new ArrayList<>();
+        drones = new HashSet<>();
     }
 
     /**
@@ -58,6 +60,11 @@ public class DroneFleet {
      */ 
     public boolean containsDroneFromLocation(String locationCode) {
         /* TODO: Implement */
-        return false; 
+        for (DeliveryDrone drone : drones) {
+            if (drone.getLocationCode().equals(locationCode)) {
+                return drones.contains(drone);
+            }
+        }
+        return false;
     }
 }
